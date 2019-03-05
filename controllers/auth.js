@@ -13,6 +13,7 @@ router.post("/signup", function(req, res) {
       where: { email: req.body.email },
       defaults: {
         name: req.body.name,
+        username: req.body.username,
         password: req.body.password
       }
     })
