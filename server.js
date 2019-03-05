@@ -60,6 +60,7 @@ app.get("/profile", isLoggedIn, function(req, res) {
 });
 
 app.use("/auth", require("./controllers/auth"));
+app.use("/poems", require("./controllers/poems"));
 
 var server = app.listen(port, function() {
   console.log(`🔥 Listening on port ${port}...`);
