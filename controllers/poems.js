@@ -5,19 +5,13 @@ const router = express.Router();
 // POST /poems - create new poem
 router.post("/", (req, res) => {
   db.poem
-    .create(
-      {
-        title: req.body.title,
-        content: req.body.content,
-        userId: req.body.user
-      },
-      {
-        defaults: {
-          isPublished: false,
-          hearts: 0
-        }
-      }
-    )
+    .create({
+      title: req.body.title,
+      content: req.body.content,
+      userId: req.body.userId,
+      isPublished: req.body.isPublished ? true : false,
+      hearts: 0
+    })
     .then(() => {
       res.redirect("/");
     });

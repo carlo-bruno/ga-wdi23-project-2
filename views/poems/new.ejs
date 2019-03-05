@@ -1,1 +1,16 @@
 <!-- Poem Writer Page -->
+<form action="/poems" method="POST">
+  <!-- title -->
+  <input type="text" name="title" placeholder="Title" /><br />
+  <!-- content -->
+  <textarea name="content" id="" cols="30" rows="10"></textarea>
+  <br />
+  <label for="isPublished">Publish poem?</label>
+  <input type="checkbox" name="isPublished" />
+  <br />
+  <!-- category -->
+  <!-- <h3><%= currentUser.name %></h3> -->
+
+  <input type="hidden" name="userId" value="<%=currentUser.id%>" />
+  <input type="submit" value="Create!" />
+</form>

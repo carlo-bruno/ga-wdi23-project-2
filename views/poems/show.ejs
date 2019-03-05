@@ -1,2 +1,9 @@
 <!-- Shows one poem -->
-<h2>Poem by Author Name</h2>
+<% let {title, content,hearts, comment, isPublished, user,
+comments,} = poem %>
+
+<h2><%= title %> by <%= user.name %></h2>
+
+<p><%= content %></p>
+
+<h3>Published: <%= isPublished %></h3>

@@ -5,6 +5,7 @@ const passport = require("./config/passportConfig");
 const session = require("express-session");
 const flash = require("connect-flash");
 const isLoggedIn = require("./middleware/isLoggedIn");
+const landingPage = require("./middleware/landingPage");
 const helmet = require("helmet");
 require("dotenv").config();
 const SequelizeStore = require("connect-session-sequelize")(
@@ -51,7 +52,18 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get("/", function(req, res) {
+app.get("/", landingPage, (req, res) => {
+  db.poem
+    .findAll({
+      where: { isPublished: true },
+      include: [db.user]
+    })
+    .then(poems => {
+      res.render("main/index", { poems });
+    });
+});
+
+app.get("/welcome", (req, res) => {
   res.render("index");
 });
 
