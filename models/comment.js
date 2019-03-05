@@ -3,9 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const comment = sequelize.define(
     "comment",
     {
-      content: DataTypes.TEXT,
+      poemId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
-      postId: DataTypes.INTEGER
+      content: DataTypes.TEXT
     },
     {}
   );

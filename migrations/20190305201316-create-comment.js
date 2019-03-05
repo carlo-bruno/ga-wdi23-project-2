@@ -8,14 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
-        type: Sequelize.TEXT
+      poemId: {
+        type: Sequelize.INTEGER
       },
       userId: {
         type: Sequelize.INTEGER
       },
-      postId: {
-        type: Sequelize.INTEGER
+      content: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
