@@ -11,14 +11,18 @@ module.exports = (sequelize, DataTypes) => {
           len: {
             args: [1, 99],
             msg:
-              "Invalid user name. Must be between 1 and 99 characters."
+              "Invalid name. Must be between 1 and 99 characters."
           }
         }
       },
-      email: {
+      username: {
         type: DataTypes.STRING,
         validate: {
-          isEmail: { msg: "Invalid email address." }
+          len: {
+            args: [1, 99],
+            msg:
+              "Invalid user name. Must be between 1 and 99 characters."
+          }
         }
       },
       password: {
@@ -28,6 +32,12 @@ module.exports = (sequelize, DataTypes) => {
             args: [8, 99],
             msg: "Password must be at least 8 characters."
           }
+        }
+      },
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: { msg: "Invalid email address." }
         }
       }
     },
@@ -44,6 +54,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   user.associate = function(models) {
     // associations can be defined here
+    models.user.hasMany(models.poem);
+    models.user.hasMany(models.comment);
   };
   // Function to compare entered password to hashed password
   user.prototype.validPassword = function(passwordTyped) {
@@ -55,6 +67,5 @@ module.exports = (sequelize, DataTypes) => {
     delete userData.password;
     return userData;
   };
-
   return user;
 };
