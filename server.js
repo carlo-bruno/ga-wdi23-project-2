@@ -76,6 +76,11 @@ app.get("/profile", isLoggedIn, function(req, res) {
 app.use("/auth", require("./controllers/auth"));
 app.use("/poems", require("./controllers/poems"));
 app.use("/users", require("./controllers/users"));
+app.use("/categories", require("./controllers/categories"));
+
+app.get("/*", (req, res) => {
+  res.redirect("/");
+});
 
 var server = app.listen(port, function() {
   console.log(`🔥 Listening on port ${port}...`);

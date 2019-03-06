@@ -5,7 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING
     },
-    {}
+    {
+      hooks: {
+        beforeCreate: function(category, options) {
+          category.name = category.name.toLowerCase();
+        }
+      }
+    }
   );
   category.associate = function(models) {
     // associations can be defined here

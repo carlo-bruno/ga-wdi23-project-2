@@ -1,1 +1,10 @@
 <!-- Show All Poems in one category -->
+<h2><%= category.name %></h2>
+
+<% poems.forEach(poem => { %>
+
+<h3>
+  <a href="/poems/<%= poem.id %>"><%= poem.title %></a>
+</h3>
+
+<% }); %>

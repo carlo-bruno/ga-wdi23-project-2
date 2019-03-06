@@ -12,8 +12,16 @@ router.post("/", (req, res) => {
       isPublished: req.body.isPublished ? true : false,
       hearts: 0
     })
-    .then(() => {
-      res.redirect("/");
+    .then(poem => {
+      db.category
+        .findOrCreate({
+          where: { name: req.body.category }
+        })
+        .spread((category, created) => {
+          poem.addCategory(category).then(category => {
+            res.redirect(`/poems/${poem.id}`);
+          });
+        });
     });
 });
 
@@ -54,6 +62,10 @@ router.get("/:id", (req, res) => {
       poem.getCategories().then(categories => {
         res.render("poems/show", { poem, categories });
       });
+    })
+    .catch(error => {
+      req.flash("error", "Poem not found");
+      res.redirect("/poems");
     });
 });
 
