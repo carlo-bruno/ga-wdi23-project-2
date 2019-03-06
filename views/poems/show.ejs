@@ -7,3 +7,8 @@ comments,} = poem %>
 <p><%= content %></p>
 
 <h3>Published: <%= isPublished %></h3>
+<h3>
+  <% categories.forEach(category => { %>
+  <span><%= category.name %></span>
+  <% }); %>
+</h3>

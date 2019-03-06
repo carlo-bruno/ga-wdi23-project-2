@@ -1,1 +1,27 @@
 <!-- Poem Editor Page -->
+<%let {category} = poem %>
+<h4>
+  <% categories.forEach(category => { %>
+  <span><%= category.name %></span>
+  <% }); %>
+</h4>
+
+<form action="/poems/<%=poem.id%>?_method=PUT" method="POST">
+  <!-- title -->
+  <input type="text" name="title" value="<%=poem.title%>" /><br />
+  <!-- content -->
+  <textarea name="content" id="" cols="30" rows="10">
+    <%=poem.content%>
+  </textarea>
+  <br />
+  <label for="isPublished">Publish poem?</label>
+  <input type="checkbox" name="isPublished" />
+  <br />
+  <!-- category -->
+  <input type="text" name="category" value="" />
+  <br />
+  <!-- <h3><%= currentUser.name %></h3> -->
+
+  <input type="hidden" name="userId" value="<%=currentUser.id%>" />
+  <input type="submit" value="Create!" />
+</form>

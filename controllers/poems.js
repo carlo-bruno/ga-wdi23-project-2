@@ -42,11 +42,13 @@ router.get("/new", (req, res) => {
   res.render("poems/new");
 });
 
-// GET /poems/edit/1 - edit page
+// GET /poems/1/edit - edit page
 router.get("/:id/edit", (req, res) => {
   let id = parseInt(req.params.id);
   db.poem.findById(id).then(poem => {
-    res.render("poems/edit", { poem });
+    poem.getCategories().then(categories => {
+      res.render("poems/edit", { poem, categories });
+    });
   });
 });
 
