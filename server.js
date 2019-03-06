@@ -1,6 +1,6 @@
 const express = require("express");
 const ejsLayouts = require("express-ejs-layouts");
-const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 const passport = require("./config/passportConfig");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -19,7 +19,9 @@ const port = process.env.PORT || 3001;
 app.set("view engine", "ejs");
 
 app.use(require("morgan")("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 app.use(ejsLayouts);
 app.use(helmet());
 
@@ -73,6 +75,7 @@ app.get("/profile", isLoggedIn, function(req, res) {
 
 app.use("/auth", require("./controllers/auth"));
 app.use("/poems", require("./controllers/poems"));
+app.use("/users", require("./controllers/users"));
 
 var server = app.listen(port, function() {
   console.log(`🔥 Listening on port ${port}...`);

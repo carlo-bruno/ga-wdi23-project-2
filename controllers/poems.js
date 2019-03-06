@@ -83,7 +83,7 @@ router.delete("/:id", (req, res) => {
       where: { id }
     })
     .then(() => {
-      res.redirect("/poems");
+      res.redirect("/users");
     });
 });
 
