@@ -78,7 +78,8 @@ router.put("/:id", (req, res) => {
     .update(
       {
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        isPublished: req.body.isPublished ? true : false
       },
       {
         where: { id }

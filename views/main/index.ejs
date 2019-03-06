@@ -4,7 +4,10 @@
 <% if(poems) { %>
 <!--  -->
 <% poems.forEach(poem=> { %>
-<h3><%= poem.title %> by <%= poem.user.name %></h3>
+<h3>
+  <a href="/poems/<%=poem.id %>"><%= poem.title %></a> by
+  <a href="/users/<%=poem.user.id %>"><%= poem.user.name %></a>
+</h3>
 <% }); %>
 <!--  -->
 <%} %>

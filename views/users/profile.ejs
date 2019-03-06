@@ -1,0 +1,14 @@
+<!-- Author Profile, contains all poems by author -->
+<h2>My Profile</h2>
+<% poems.forEach(poem => { %>
+<div>
+  <h3>
+    <a href="/poems/<%=poem.id%>"><%=poem.title%></a>
+  </h3>
+  <a href="/poems/<%=poem.id%>/edit">Edit</a>
+  <form action="/poems/<%= poem.id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete" />
+  </form>
+</div>
+
+<% }); %>
