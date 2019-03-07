@@ -7,10 +7,7 @@ function queryRhymes(query) {
     method: "GET",
     mode: "cors"
   })
-    .then(response => {
-      // console.log(response);
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
       // group data by syllable count
       let groups = [
@@ -56,6 +53,7 @@ function queryRhymes(query) {
             groups[key].words.length - 1 === i
               ? word.word
               : `${word.word}, `;
+          // strong matches
           if (word.score > 100) {
             span.classList.add("strong");
           }
@@ -71,15 +69,107 @@ function queryRhymes(query) {
     });
 }
 
+function querySynonyms(query) {
+  // let url = `https://api.datamuse.com/words?rel_syn=${query}`;
+  let url = `https://api.datamuse.com/words?ml=${query}`;
+
+  fetch(url, {
+    method: "GET",
+    mode: "cors"
+  })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data[0]);
+      // group by categories
+      let groups = [
+        { label: "Nouns", words: [] },
+        { label: "Adjectives", words: [] },
+        { label: "Verbs", words: [] },
+        { label: "Adverbs", words: [] }
+      ];
+
+      data.forEach(word => {
+        // debugger;
+        switch (true) {
+          case !word.tags:
+            break;
+          case word.tags.includes("n"):
+            groups[0].words.push(word);
+            break;
+          case word.tags.includes("adj"):
+            groups[1].words.push(word);
+            break;
+          case word.tags.includes("v"):
+            groups[2].words.push(word);
+            break;
+          case word.tags.includes("adv"):
+            groups[3].words.push(word);
+            break;
+          default:
+            break;
+        }
+      });
+      groups = groups.filter(group => {
+        return group.words.length > 0;
+      });
+      return groups;
+    })
+    .then(groups => {
+      console.log(groups);
+      let results = document.getElementById("synonymResult");
+      results.textContent = !!groups.length
+        ? ""
+        : "Sorry, no synonyms found";
+
+      // create container
+      for (let key in groups) {
+        let div = document.createElement("div");
+        let label = document.createElement("h5");
+        label.textContent = groups[key].label;
+        div.appendChild(label);
+
+        // create div with spans
+        let words = document.createElement("div");
+        groups[key].words.forEach((word, i) => {
+          let span = document.createElement("span");
+          // no comma on last word
+          span.textContent =
+            groups[key].words.length - 1 === i
+              ? word.word
+              : `${word.word}, `;
+          // strong matches
+          if (word.tags.includes("syn")) {
+            span.classList.add("strong");
+          }
+          words.appendChild(span);
+        });
+
+        div.appendChild(words);
+        results.appendChild(div);
+      }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const rhymeSearch = document.getElementById("rhymeSearch");
   const rhymeInput = document.getElementById("rhymeInput");
+
+  const synonymSearch = document.getElementById("synonymSearch");
+  const synonymInput = document.getElementById("synonymInput");
 
   rhymeSearch.addEventListener("submit", e => {
     e.preventDefault();
     let query = rhymeInput.value;
     if (query.length > 0) {
       queryRhymes(query);
+    }
+  });
+
+  synonymSearch.addEventListener("submit", e => {
+    e.preventDefault();
+    let query = synonymInput.value;
+    if (query.length > 0) {
+      querySynonyms(query);
     }
   });
 });
