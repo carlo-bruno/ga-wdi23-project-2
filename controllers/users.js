@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   let id = parseInt(req.params.id);
   // if same as logged in user, redirect to own profile
-  if (id === req.user.id) {
+  if (req.user && id === req.user.id) {
     res.redirect("/users");
   }
 

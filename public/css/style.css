@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Writer Page ------------------------------------ */
+#notepad {
+  width: 40vw;
+  height: 40vh;
+}
+
+.tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rhyme-box,
+.synonym-box {
+  width: 45%;
+  display: inline-block;
+  background-color: #ddd;
+  padding: 10px 20px;
+}
+
+.strong {
+  font-weight: 500;
+}
