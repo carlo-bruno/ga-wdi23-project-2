@@ -1,32 +1,39 @@
-<h1><a href="/">Pluma</a></h1>
+<header>
+  <div class="page-header">
+    <a href="/" class="logo">
+      <div class="img-box"></div>
+      <h1>Pluma</h1>
+    </a>
 
-<% if (currentUser) { %>
-<nav>
-  <a href="/">HOME</a>
-  <a href="/poems/new">WRITE</a>
-  <a href="/users">PROFILE</a>
-  <a href="/auth/logout">SIGN OUT</a>
-</nav>
-<% } else { %>
-<nav>
-  <a href="#">ABOUT</a>
-  <a href="/auth/signup">SIGN UP</a>
-  <form action="/auth/login" method="POST">
-    <input
-      id="authEmail"
-      type="email"
-      name="email"
-      placeholder="Email"
-    />
+    <% if (currentUser) { %>
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/poems/new">WRITE</a>
+      <a href="/users">PROFILE</a>
+      <a href="/auth/logout">SIGN OUT</a>
+    </nav>
+    <% } else { %>
+    <nav>
+      <a href="#">ABOUT</a>
+      <a href="/auth/signup">SIGN UP</a>
+      <form action="/auth/login" method="POST">
+        <input
+          id="authEmail"
+          type="email"
+          name="email"
+          placeholder="Email"
+        />
 
-    <input
-      id="authPassword"
-      type="password"
-      name="password"
-      placeholder="Password"
-    />
+        <input
+          id="authPassword"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
 
-    <input type="submit" value="Log In" />
-  </form>
-</nav>
-<% } %>
+        <input type="submit" value="Log In" />
+      </form>
+    </nav>
+    <% } %>
+  </div>
+</header>

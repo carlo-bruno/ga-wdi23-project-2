@@ -4,6 +4,88 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+/* Page Header ------------------------------------ */
+header {
+  color: #ffffff;
+  background-color: #000000;
+  /* position: fixed; */
+  width: 100vw;
+  top: 0;
+}
+
+.page-header {
+  width: 90%;
+  max-width: 1170px;
+  height: 4rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.page-header .img-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background-image: url("/img/feather-logo.jpg");
+  background-position: center;
+  background-size: 110px;
+
+  margin-right: 10px;
+}
+
+.page-header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.page-header nav {
+  margin-left: auto;
+  display: flex;
+}
+
+.page-header nav a {
+  padding: 0 10px;
+  margin-right: 5px;
+}
+
+/* Landing Page ----------------------------------- */
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  background-image: linear-gradient(
+      -90deg,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url("/img/patrick-fore-381200-unsplash.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position-x: right;
+  background-position-y: top;
+}
+
 /* Writer Page ------------------------------------ */
 #notepad {
   width: 40vw;

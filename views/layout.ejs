@@ -9,27 +9,24 @@
     <title>Pluma - Poetry Writer | Carlo Bruno</title>
 
     <!-- Latest compiled and minified CSS & JS -->
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
       crossorigin="anonymous"
-    />
+    /> -->
     <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/img/kisspng-feather.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
-    <div class="container">
-      <!-- <h1>Authentication</h1>
-      <%- JSON.stringify(currentUser) %> <% if (currentUser) { %>
-      <h4>Welcome <%= currentUser.name %> <%= currentUser.id %></h4>
-      <% }%>
-      -->
-      <% include partials/header %>
-      <!--  -->
-      <% include partials/alerts %>
-      <!--  -->
-      <%- body %>
-    </div>
-    <%- script %>
+    <% include partials/header %>
+    <!--  -->
+    <% include partials/alerts %>
+    <!--  -->
+    <%- body %> <%- script %>
   </body>
 </html>
