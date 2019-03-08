@@ -14,7 +14,7 @@ const SequelizeStore = require("connect-session-sequelize")(
 const db = require("./models");
 const app = express();
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.use(require("morgan")("dev"));
