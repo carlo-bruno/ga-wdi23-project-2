@@ -1,4 +1,5 @@
 const express = require("express");
+const async = require("async");
 const db = require("../models");
 const router = express.Router();
 
@@ -13,15 +14,31 @@ router.post("/", (req, res) => {
       hearts: 0
     })
     .then(poem => {
-      db.category
-        .findOrCreate({
-          where: { name: req.body.category }
-        })
-        .spread((category, created) => {
-          poem.addCategory(category).then(category => {
-            res.redirect(`/poems/${poem.id}`);
-          });
-        });
+      let catArr = req.body.category
+        .toLowerCase()
+        .replace(/\,\s/g, ",")
+        .split(",");
+
+      let createCallBacks = catArr.map(cat => {
+        return function(cb) {
+          db.category
+            .findOrCreate({
+              where: { name: cat }
+            })
+            .spread((category, created) => {
+              poem.addCategory(category);
+              cb();
+            });
+        };
+      });
+
+      async.parallel(
+        async.reflectAll(createCallBacks),
+        (error, results) => {
+          console.log("created categories");
+          res.redirect(`/poems/${poem.id}`);
+        }
+      );
     });
 });
 
@@ -86,7 +103,33 @@ router.put("/:id", (req, res) => {
       }
     )
     .then(() => {
-      res.redirect(`/poems/${id}`);
+      db.poem.findByPk(id).then(poem => {
+        let catArr = req.body.category
+          .toLowerCase()
+          .replace(/\,\s/g, ",")
+          .split(",");
+
+        let createCallBacks = catArr.map(cat => {
+          return function(cb) {
+            db.category
+              .findOrCreate({
+                where: { name: cat }
+              })
+              .spread((category, created) => {
+                poem.addCategory(category);
+                cb();
+              });
+          };
+        });
+
+        async.parallel(
+          async.reflectAll(createCallBacks),
+          (error, results) => {
+            console.log("created categories");
+            res.redirect(`/poems/${id}`);
+          }
+        );
+      });
     });
 });
 
@@ -98,7 +141,13 @@ router.delete("/:id", (req, res) => {
       where: { id }
     })
     .then(() => {
-      res.redirect("/users");
+      db.categoriesPoems
+        .destroy({
+          where: { poemId: id }
+        })
+        .then(() => {
+          res.redirect("/users");
+        });
     });
 });
 

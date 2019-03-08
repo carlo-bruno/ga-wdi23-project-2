@@ -1,10 +1,8 @@
 <!-- Poem Editor Page -->
 <%let {category} = poem %>
-<h4>
-  <% categories.forEach(category => { %>
-  <span><%= category.name %></span>
-  <% }); %>
-</h4>
+<!--  -->
+<% let catStr = categories.map(category => category.name).join(', ')
+%>
 
 <form action="/poems/<%=poem.id%>?_method=PUT" method="POST">
   <!-- title -->
@@ -15,10 +13,11 @@
   >
   <br />
   <label for="isPublished">Publish poem?</label>
-  <input type="checkbox" name="isPublished" />
+  <input type="checkbox" name="isPublished" <%=poem.isPublished ?
+  "checked" : "" %> />
   <br />
   <!-- category -->
-  <input type="text" name="category" value="" />
+  <input type="text" name="category" value="<%= catStr %>" />
   <br />
 
   <input type="submit" value="Save Changes" />

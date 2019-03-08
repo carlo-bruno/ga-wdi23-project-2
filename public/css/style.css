@@ -47,6 +47,7 @@ header {
   flex-wrap: nowrap;
   align-items: center;
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -54,16 +55,20 @@ header {
   font-size: 1.3rem;
 }
 .page-header .img-box {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
 
   background-image: url("/img/feather-logo.jpg");
-  background-position: center;
-  background-size: 110px;
+  background-position-x: 56%;
+  background-position-y: 46%;
+  background-size: 130px;
 
   margin-right: 12px;
   transform: rotate(-20deg);
+  border: 4px solid black;
+
+  box-shadow: 0 0 0 4px white;
 }
 
 .page-header a {
@@ -118,6 +123,7 @@ header {
   height: 100vh;
   overflow: hidden;
   position: fixed;
+  background-color: #555555;
   background-image: linear-gradient(
       -90deg,
       rgba(0, 0, 0, 0.3),
@@ -153,4 +159,9 @@ header {
 
 .strong {
   font-weight: 500;
+}
+
+/* Show Poem Page --------------------------------- */
+.title-bar {
+  padding: 10px 8%;
 }
