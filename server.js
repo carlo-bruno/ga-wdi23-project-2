@@ -40,7 +40,7 @@ app.use(
 );
 
 // use this line once to set up the store table
-// sessionStore.sync();
+sessionStore.sync();
 
 //! must come after session & before passport
 app.use(flash());
