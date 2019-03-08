@@ -1,14 +1,15 @@
 <!-- Shows one poem -->
 <% let {title, content,hearts, comment, isPublished, user,
 comments,} = poem %>
+<main class="container">
+  <h2><%= title %> by <%= user.name %></h2>
 
-<h2><%= title %> by <%= user.name %></h2>
+  <pre><%- content %></pre>
 
-<p><%= content %></p>
-
-<h3>Published: <%= isPublished %></h3>
-<h3>
-  <% categories.forEach(category => { %>
-  <span><%= category.name %></span>
-  <% }); %>
-</h3>
+  <h3>Published: <%= isPublished %></h3>
+  <h3>
+    <% categories.forEach(category => { %>
+    <span><%= category.name %></span>
+    <% }); %>
+  </h3>
+</main>

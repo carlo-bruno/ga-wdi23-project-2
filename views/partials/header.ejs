@@ -8,13 +8,17 @@
     <% if (currentUser) { %>
     <nav>
       <a href="/">HOME</a>
+      <b></b>
       <a href="/poems/new">WRITE</a>
+      <b></b>
       <a href="/users">PROFILE</a>
+      <b></b>
       <a href="/auth/logout">SIGN OUT</a>
     </nav>
     <% } else { %>
     <nav>
       <a href="#">ABOUT</a>
+      <b></b>
       <a href="/auth/signup">SIGN UP</a>
       <form action="/auth/login" method="POST">
         <input
@@ -31,7 +35,7 @@
           placeholder="Password"
         />
 
-        <input type="submit" value="Log In" />
+        <button class="log-in-btn" type="submit">Log In</button>
       </form>
     </nav>
     <% } %>

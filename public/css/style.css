@@ -5,11 +5,18 @@
 }
 
 body {
-  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  background-color: #e4e4e4;
 }
 
 a {
   text-decoration: none;
+}
+
+pre {
+  /* font-family: "Lato", sans-serif; */
+  /* font-size: 1.2rem; */
 }
 
 .container {
@@ -17,19 +24,23 @@ a {
   margin: 0 auto;
 }
 
+/* Forms ------------------------------------------ */
+input {
+  font-size: 1rem;
+  padding: 0 5px;
+}
+
 /* Page Header ------------------------------------ */
 header {
   color: #ffffff;
   background-color: #000000;
-  /* position: fixed; */
   width: 100vw;
-  top: 0;
 }
 
 .page-header {
   width: 90%;
   max-width: 1170px;
-  height: 4rem;
+  height: 5rem;
   margin: 0 auto;
 
   display: flex;
@@ -39,6 +50,8 @@ header {
 .logo {
   display: flex;
   align-items: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.3rem;
 }
 .page-header .img-box {
   width: 50px;
@@ -49,7 +62,8 @@ header {
   background-position: center;
   background-size: 110px;
 
-  margin-right: 10px;
+  margin-right: 12px;
+  transform: rotate(-20deg);
 }
 
 .page-header a {
@@ -60,11 +74,42 @@ header {
 .page-header nav {
   margin-left: auto;
   display: flex;
+  align-items: center;
 }
 
 .page-header nav a {
-  padding: 0 10px;
-  margin-right: 5px;
+  padding: 0 12px;
+  /* margin-right: 5px; */
+}
+.page-header nav a:hover {
+  background-color: green;
+}
+
+.page-header b:before {
+  content: "|";
+  font-size: 1.3rem;
+  line-height: 6px;
+  margin: 0 8px;
+}
+
+.page-header form {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+}
+
+#authEmail,
+#authPassword {
+  width: 9rem;
+  margin: 0 3px;
+}
+
+.log-in-btn {
+  font-size: 1rem;
+  line-height: 20.5px;
+  padding: 0 12px;
+  margin-left: 3px;
+  border-radius: 3px;
 }
 
 /* Landing Page ----------------------------------- */

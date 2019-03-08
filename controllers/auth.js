@@ -44,7 +44,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/",
     successFlash: "You have logged in!",
-    failureRedirect: "/auth/login",
+    failureRedirect: "/welcome",
     failureFlash: "Invalid username/password"
   })
 );
@@ -52,7 +52,7 @@ router.post(
 router.get("/logout", function(req, res) {
   req.logout();
   req.flash("success", "You have logged out!");
-  res.redirect("/");
+  res.redirect("/welcome");
 });
 
 module.exports = router;
