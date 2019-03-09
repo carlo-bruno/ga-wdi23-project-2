@@ -1,6 +1,5 @@
 <!-- Shows one poem -->
-<% let {title, content,hearts, comment, isPublished, user,
-comments,} = poem %>
+<% let {title, content,hearts, isPublished, user} = poem %>
 <header>
   <div class="container title-bar">
     <h2><%= title %> by <%= user.name %></h2>
@@ -18,3 +17,28 @@ comments,} = poem %>
     <% }); %>
   </h3>
 </main>
+<section class="comment-box">
+  <h2>Comments:</h2>
+  <% comments.forEach(comment => { %>
+  <blockquote><%= comment.content %></blockquote>
+  <cite><%= comment.user.name%></cite>
+  <% }) %>
+
+  <hr />
+</section>
+
+<section class="add-comment-box">
+  <h3>Add Comments:</h3>
+  <form action="/comments" method="POST">
+    <input type="hidden" name="poemId" value="<%=poem.id %>" />
+    <h4><%= currentUser.name %></h4>
+    <input
+      type="hidden"
+      name="userId"
+      value="<%=currentUser.id%>"
+    />
+    <textarea name="content" cols="30" rows="10"></textarea>
+    <br />
+    <input type="submit" value="Post Comment" />
+  </form>
+</section>

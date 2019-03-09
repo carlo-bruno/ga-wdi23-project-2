@@ -40,7 +40,7 @@ app.use(
 );
 
 // use this line once to set up the store table
-sessionStore.sync();
+// sessionStore.sync();
 
 //! must come after session & before passport
 app.use(flash());
@@ -77,6 +77,7 @@ app.use("/auth", require("./controllers/auth"));
 app.use("/poems", require("./controllers/poems"));
 app.use("/users", require("./controllers/users"));
 app.use("/categories", require("./controllers/categories"));
+app.use("/comments", require("./controllers/comments"));
 
 app.get("/*", landingPage, (req, res) => {
   res.redirect("/");

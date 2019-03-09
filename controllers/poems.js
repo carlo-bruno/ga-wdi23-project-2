@@ -75,11 +75,22 @@ router.get("/:id", (req, res) => {
   db.poem
     .findOne({
       where: { id },
-      include: [db.user, db.comment]
+      include: [db.user]
     })
     .then(poem => {
       poem.getCategories().then(categories => {
-        res.render("poems/show", { poem, categories });
+        db.comment
+          .findAll({
+            where: { poemId: poem.id },
+            include: [db.user]
+          })
+          .then(comments => {
+            res.render("poems/show", {
+              poem,
+              categories,
+              comments
+            });
+          });
       });
     })
     .catch(error => {
