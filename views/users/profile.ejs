@@ -1,14 +1,21 @@
 <!-- Author Profile, contains all poems by author -->
-<h2>My Profile</h2>
-<% poems.forEach(poem => { %>
-<div>
-  <h3>
-    <a href="/poems/<%=poem.id%>"><%=poem.title%></a>
-  </h3>
-  <a href="/poems/<%=poem.id%>/edit">Edit</a>
-  <form action="/poems/<%= poem.id %>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete" />
-  </form>
-</div>
 
-<% }); %>
+<header>
+  <div class="container title-bar">
+    <h2>My Dashboard</h2>
+  </div>
+</header>
+<main class="container main">
+  <% poems.forEach(poem => { %>
+  <div class="card <%= poem.isPublished ? 'published' : 'unpublished' %>">
+    <h3>
+      <a class="type" href="/poems/<%=poem.id%>"><%=poem.title%></a>
+    </h3>
+    <a href="/poems/<%=poem.id%>/edit"><button class="btn">Edit</button></a>
+    <form action="/poems/<%= poem.id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">Delete</button>
+    </form>
+  </div>
+
+  <% }); %>
+</main>

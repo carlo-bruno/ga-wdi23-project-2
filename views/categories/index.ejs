@@ -1,6 +1,9 @@
 <!-- Show all categories -->
-<% categories.forEach(category => { %>
-<h3>
-  <a href="/categories/<%= category.id %>"><%= category.name %></a>
-</h3>
-<% }); %>
+<main class="category main">
+
+  <% categories.forEach(category => { %>
+  <h3>
+    <a href="/categories/<%= category.id %>"><%= category.name %></a>
+  </h3>
+  <% }); %>
+</main>

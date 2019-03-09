@@ -5,40 +5,42 @@
     <h2><%= title %> by <%= user.name %></h2>
   </div>
 </header>
-<main class="container">
+<main class="container main">
   <pre><%- content %></pre>
 
-  <h3>Published: <%= isPublished %></h3>
-  <h3>
+  <i>
     Categories: <% categories.forEach(category => { %>
-    <a href="/categories/<%=category.id%>"
-      ><span><%= category.name %></span></a
-    >
+    <a href="/categories/<%=category.id%>"><span><%= category.name %></span></a>
     <% }); %>
-  </h3>
+  </i>
+
+  <section class="comment-box">
+    <h3>Comments:</h3>
+    <% if (comments.length == 0) { %>
+    <blockquote>&mdash;</blockquote>
+    <% } %>
+    <% comments.forEach(comment => { %>
+    <blockquote><%= comment.content %></blockquote>
+    <cite>&mdash;<%= comment.user.name%></cite>
+    <% }) %>
+
+    <hr />
+  </section>
+  <% if(currentUser){ %>
+  <section class="add-comment-box">
+    <h3>Add Comments:</h3>
+    <form action="/comments" method="POST">
+      <input type="hidden" name="poemId" value="<%=poem.id %>" />
+      <h4><%= currentUser.name %></h4>
+      <input type="hidden" name="userId" value="<%=currentUser.id%>" />
+      <textarea name="content" cols="30"></textarea>
+      <br />
+      <input type="submit" value="Post Comment" />
+    </form>
+  </section>
+  <% } else { %>
+  <section class="add-comment-box">
+    <h3>Sign up or Log in to comment</h3>
+  </section>
+  <% } %>
 </main>
-<section class="comment-box">
-  <h2>Comments:</h2>
-  <% comments.forEach(comment => { %>
-  <blockquote><%= comment.content %></blockquote>
-  <cite><%= comment.user.name%></cite>
-  <% }) %>
-
-  <hr />
-</section>
-
-<section class="add-comment-box">
-  <h3>Add Comments:</h3>
-  <form action="/comments" method="POST">
-    <input type="hidden" name="poemId" value="<%=poem.id %>" />
-    <h4><%= currentUser.name %></h4>
-    <input
-      type="hidden"
-      name="userId"
-      value="<%=currentUser.id%>"
-    />
-    <textarea name="content" cols="30" rows="10"></textarea>
-    <br />
-    <input type="submit" value="Post Comment" />
-  </form>
-</section>

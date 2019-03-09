@@ -1,46 +1,48 @@
 <!-- Poem Writer Page -->
-<form action="/poems" method="POST">
-  <!-- title -->
-  <input type="text" name="title" placeholder="Title" /><br />
-  <!-- content -->
-  <textarea name="content" id="notepad"></textarea>
-  <br />
-  <!-- Show publish, submit if logged in -->
-  <% if(currentUser){ %>
-  <label for="isPublished">Publish poem?</label>
-  <input type="checkbox" name="isPublished" />
-  <br />
-  <input type="text" name="category" placeholder="Category" />
-  <br />
+<main class="container main">
+  <form action="/poems" method="POST" class="writer-form">
+    <!-- title -->
+    <input type="text" name="title" placeholder="Title" /><br />
+    <!-- content -->
+    <textarea name="content" id="newPad" class="notepad"></textarea>
+    <br />
+    <!-- Show publish, submit if logged in -->
+    <% if(currentUser){ %>
+    <label for="isPublished">Publish poem?</label>
+    <input type="checkbox" name="isPublished" />
+    <br />
+    <input type="text" name="category" placeholder="Category" />
+    <br />
 
-  <input type="hidden" name="userId" value="<%=currentUser.id%>" />
-  <input type="submit" value="Create!" />
-  <%} else { %>
-  <p>Sign up or Log In to save your poem</p>
-  <% } %>
-</form>
+    <input type="hidden" name="userId" value="<%=currentUser.id%>" />
+    <input type="submit" value="Create!" />
+    <%} else { %>
+    <p>Sign up or Log In to save your poem</p>
+    <% } %>
+  </form>
 
-<!-- Writer Tools -->
-<section class="tools">
-  <div class="rhyme-box">
-    <form id="rhymeSearch">
-      <input id="rhymeInput" type="text" placeholder="Rhymes" />
-      <input type="submit" value="Search" />
-    </form>
-    <div id="rhymeResult">
-      <!--  -->
+  <!-- Writer Tools -->
+  <section class="tools">
+    <div class="rhyme-box">
+      <form id="rhymeSearch">
+        <input id="rhymeInput" type="text" placeholder="Rhymes" />
+        <input type="submit" value="Search" />
+      </form>
+      <div id="rhymeResult">
+        <!--  -->
+      </div>
     </div>
-  </div>
 
-  <div class="synonym-box">
-    <form id="synonymSearch">
-      <input id="synonymInput" type="text" placeholder="Synonyms" />
-      <input id="synonymBtn" type="submit" value="Search" />
-    </form>
-    <div id="synonymResult">
-      <!--  -->
+    <div class="synonym-box">
+      <form id="synonymSearch">
+        <input id="synonymInput" type="text" placeholder="Synonyms" />
+        <input id="synonymBtn" type="submit" value="Search" />
+      </form>
+      <div id="synonymResult">
+        <!--  -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <script src="/js/app.js"></script>

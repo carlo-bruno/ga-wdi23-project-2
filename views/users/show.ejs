@@ -1,10 +1,17 @@
 <!-- Other user's profile -->
-<h2>Poems by <%= poems[0].user.name %>:</h2>
-<% poems.forEach(poem => { %>
-<div>
-  <h3>
-    <a href="/poems/<%=poem.id%>"><%=poem.title%></a>
-  </h3>
-</div>
+<header>
+  <div class="container title-bar">
+    <h2>Poems by <%= poems[0].user.name %>:</h2>
+  </div>
+</header>
+<main class="container main">
 
-<% }); %>
+  <% poems.forEach(poem => { %>
+  <div>
+    <h3>
+      <a class="type" href="/poems/<%=poem.id%>"><%=poem.title%></a>
+    </h3>
+  </div>
+
+  <% }); %>
+</main>
