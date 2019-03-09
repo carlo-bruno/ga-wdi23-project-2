@@ -1,4 +1,4 @@
-console.log("js connected");
+console.log("app.js connected");
 
 function queryRhymes(query) {
   let url = `https://api.datamuse.com/words?rel_rhy=${query}`;

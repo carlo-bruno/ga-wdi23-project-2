@@ -1,10 +1,11 @@
 const express = require("express");
+const isLoggedIn = require('../middleware/isLoggedIn')
 const db = require("../models");
 const router = express.Router();
 
 // GET /users - current user's profile
 // show all poems by currentUser
-router.get("/", (req, res) => {
+router.get("/dashboard", isLoggedIn, (req, res) => {
   let id = parseInt(req.user.id);
   db.poem
     .findAll({
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
       include: [db.user]
     })
     .then(poems => {
-      res.render("users/profile", { poems });
+      res.render("users/dashboard", { poems });
     });
 });
 
@@ -20,18 +21,17 @@ router.get("/", (req, res) => {
 // only show published poems by author
 router.get("/:id", (req, res) => {
   let id = parseInt(req.params.id);
-  // if same as logged in user, redirect to own profile
-  if (req.user && id === req.user.id) {
-    res.redirect("/users");
-  }
 
-  db.poem
-    .findAll({
-      where: { userId: id, isPublished: true },
-      include: [db.user]
+  db.user
+    .find({
+      where: { id },
     })
-    .then(poems => {
-      res.render("users/show", { poems });
+    .then(user => {
+      user.getPoems({
+        where: { isPublished: true }
+      }).then(poems => {
+        res.render("users/show", { user, poems });
+      })
     });
 });
 

@@ -15,7 +15,9 @@ router.get("/:id", (req, res) => {
       where: { id: req.params.id }
     })
     .then(category => {
-      category.getPoems().then(poems => {
+      category.getPoems({
+        where: { isPublished: true }
+      }).then(poems => {
         res.render("categories/show", { category, poems });
       });
     });

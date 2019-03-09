@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
         .split(",");
 
       let createCallBacks = catArr.map(cat => {
-        return function(cb) {
+        return function (cb) {
           db.category
             .findOrCreate({
               where: { name: cat }
@@ -85,10 +85,13 @@ router.get("/:id", (req, res) => {
             include: [db.user]
           })
           .then(comments => {
-            res.render("poems/show", {
-              poem,
-              categories,
-              comments
+            db.poem.findAll({
+              where: { userId: poem.user.id, isPublished: true }
+            }).then(more => {
+              res.render("poems/show", {
+                poem, categories, comments, more
+              })
+
             });
           });
       });
@@ -121,7 +124,7 @@ router.put("/:id", (req, res) => {
           .split(",");
 
         let createCallBacks = catArr.map(cat => {
-          return function(cb) {
+          return function (cb) {
             db.category
               .findOrCreate({
                 where: { name: cat }

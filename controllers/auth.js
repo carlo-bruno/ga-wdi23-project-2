@@ -3,11 +3,11 @@ var router = express.Router();
 var db = require("../models");
 const passport = require("../config/passportConfig");
 
-router.get("/signup", function(req, res) {
+router.get("/signup", function (req, res) {
   res.render("auth/signup");
 });
 
-router.post("/signup", function(req, res) {
+router.post("/signup", function (req, res) {
   db.user
     .findOrCreate({
       where: { email: req.body.email },
@@ -17,7 +17,7 @@ router.post("/signup", function(req, res) {
         password: req.body.password
       }
     })
-    .spread(function(user, created) {
+    .spread(function (user, created) {
       if (created) {
         console.log("User created");
         passport.authenticate("local", {
@@ -30,14 +30,11 @@ router.post("/signup", function(req, res) {
         res.redirect("/auth/signup");
       }
     })
-    .catch(function(error) {
+    .catch(function (error) {
       res.redirect("/auth/signup");
     });
 });
 
-router.get("/login", function(req, res) {
-  res.render("auth/login");
-});
 
 router.post(
   "/login",
@@ -49,7 +46,7 @@ router.post(
   })
 );
 
-router.get("/logout", function(req, res) {
+router.get("/logout", function (req, res) {
   req.logout();
   req.flash("success", "You have logged out!");
   res.redirect("/welcome");
