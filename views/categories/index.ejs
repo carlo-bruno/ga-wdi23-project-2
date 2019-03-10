@@ -5,11 +5,13 @@
   </div>
 </header>
 
-<main class="category main">
+<main class="container main">
+  <div class="categories">
+    <% categories.forEach(category => { %>
+    <h3>
+      <a class="type" href="/categories/<%= category.id %>"><%= category.name %></a>
+    </h3>
+    <% }); %>
+  </div>
 
-  <% categories.forEach(category => { %>
-  <h3>
-    <a class="type" href="/categories/<%= category.id %>"><%= category.name %></a>
-  </h3>
-  <% }); %>
 </main>

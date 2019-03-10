@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
     .create({
       title: req.body.title,
       content: req.body.content,
-      userId: req.body.userId,
+      userId: req.user.id,
       isPublished: req.body.isPublished ? true : false,
       hearts: 0
     })

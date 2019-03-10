@@ -11,7 +11,7 @@
     <pre><%- content %></pre>
 
     <em>
-      Categories: <% categories.forEach(category => { %>
+      <a href="/categories"><strong>Categories: </strong></a> <% categories.forEach(category => { %>
       <a class="highlight" href="/categories/<%=category.id%>"><span><%= category.name %></span></a>
       <% }); %>
     </em>

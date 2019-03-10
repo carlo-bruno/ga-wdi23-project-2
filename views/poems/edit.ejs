@@ -1,47 +1,31 @@
 <!-- Poem Editor Page -->
 <%let {category} = poem %>
 <% let catStr = categories.map(category => category.name).join(', ')%>
+
 <main class="container main">
   <form action="/poems/<%=poem.id%>?_method=PUT" method="POST" class="writer-form">
     <!-- title -->
-    <input type="text" name="title" value="<%=poem.title%>" /><br />
+    <h2><span class="cursive">Pluma</span><span class="type-font">/editor</span></h2>
+    <input class="input-title" type="text" name="title" value="<%=poem.title%>" autocomplete="off" /><br />
     <!-- content -->
     <textarea name="content" id="editPad" class="notepad type-font"><%-poem.content%></textarea>
-    <br />
-    <label for="isPublished">Publish poem?</label>
-    <input type="checkbox" name="isPublished" <%=poem.isPublished ?
-  "checked" : "" %> />
-    <br />
-    <!-- category -->
-    <input type="text" name="category" value="<%= catStr %>" />
-    <br />
 
-    <input type="submit" value="Save Changes" />
+    <div class="writer-options">
+      <div class="group category-box">
+        <input type="text" name="category" value="<%= catStr %>" />
+      </div>
+
+      <div class="group publish-box">
+        <label for="isPublished">Publish poem?</label>
+        <input type="checkbox" name="isPublished" <%=poem.isPublished ?
+            "checked" : "" %> />
+      </div>
+
+      <button class="save-btn" type="submit">Save Changes</button>
+    </div>
   </form>
 
 
   <!-- Writer Tools -->
-  <section class="tools">
-    <div class="rhyme-box">
-      <form id="rhymeSearch">
-        <input id="rhymeInput" type="text" placeholder="Rhymes" />
-        <input type="submit" value="Search" />
-      </form>
-      <div id="rhymeResult">
-        <!--  -->
-      </div>
-    </div>
-
-    <div class="synonym-box">
-      <form id="synonymSearch">
-        <input id="synonymInput" type="text" placeholder="Synonyms" />
-        <input id="synonymBtn" type="submit" value="Search" />
-      </form>
-      <div id="synonymResult">
-        <!--  -->
-      </div>
-    </div>
-  </section>
+  <% include ../partials/writerTools %>
 </main>
-
-<script src="/js/app.js"></script>

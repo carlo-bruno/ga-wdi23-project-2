@@ -8,6 +8,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #222222;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #dddddd;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -18,14 +28,16 @@ body {
   font-size: 16px;
   background-color: #e4e4e4;
   position: relative;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   overflow-x: hidden;
+  min-height: 100%;
 }
 
 pre {
   font-family: 'Special Elite', cursive;
   /* font-size: 1.2rem; */
   letter-spacing: 0.5px;
+  line-height: 1.2rem;
   margin: 20px 0 20px 5%;
   width: 90%;
   min-height: 60vh;
@@ -59,6 +71,10 @@ h3 {
   font-size: 1.3rem;
 }
 
+.cursive {
+  font-family: "Dancing Script", cursive;
+}
+
 .type {
   font-family: 'Special Elite', cursive;
   color: #000000;
@@ -75,12 +91,6 @@ h3 {
 
 .type-font {
   font-family: 'Special Elite', cursive;
-}
-
-/* Forms ------------------------------------------ */
-input {
-  font-size: 1rem;
-  padding: 0 5px;
 }
 
 /* Page Header ------------------------------------ */
@@ -105,9 +115,9 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  font-family: "Dancing Script", cursive;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 }
+
 .page-header .img-box {
   width: 55px;
   height: 55px;
@@ -121,7 +131,6 @@ header {
   margin-right: 12px;
   transform: rotate(-20deg);
   border: 4px solid black;
-
   box-shadow: 0 0 0 4px #ffffff;
 }
 
@@ -165,12 +174,13 @@ header {
   width: 9rem;
   margin: 0 3px;
   font-size: 0.9rem;
+  padding: 0 5px;
 }
 
 .log-in-btn {
-  font-size: 0.9rem;
-  line-height: 20.5px;
-  padding: 0 12px;
+  font-size: 1rem;
+  line-height: 20px;
+  padding: 0 20px;
   margin-left: 3px;
   border-radius: 3px;
 }
@@ -196,10 +206,9 @@ header {
   overflow: hidden;
   position: fixed;
   background-color: #555555;
-  background-image: linear-gradient(
-      -90deg,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.7) 50%
+  background-image: linear-gradient( 90deg,
+      rgba(0, 0, 0, 0.7) 20%,
+      rgba(0, 0, 0, 0.1)
     ),
     url("/img/patrick-fore-381200-unsplash-min.jpg");
   background-attachment: fixed;
@@ -215,9 +224,9 @@ header {
   overflow: hidden;
   position: fixed;
   background-color: #555555;
-  background-image:linear-gradient(
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.3)
+  background-image:linear-gradient( 110deg,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(255, 255, 255, 0.1)
   ),
   url("/img/ali-yahya-488146-unsplash-min.jpg");
   background-attachment: fixed;
@@ -236,22 +245,45 @@ header {
 }
 
 .home-page h3 {
-  padding-bottom: 12px;
+  padding:0 0 12px 5px;
   font-weight: 300;
   letter-spacing: .3px;
+  direction: ltr;
 }
 
-/* Writer Page ------------------------------------ */
-.writer-form {
-  margin-top: 10px;
+.all-poems {
+  height: 100vh;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+/* Writer Page / Edit ----------------------------- */
+
+.writer-form .cursive {
+  font-size: 2rem;
+}
+
+.writer-form h2 .type-font {
+  font-size: 1.4rem;
+}
+.writer-form input {
+  border: 2px solid #222222;
+  border-radius: 5px;
+}
+
+.input-title {
+  font-size: 1.2rem;
+  padding: 0 10px;
 }
 
 .notepad {
+  resize: vertical;
   width: 90%;
-  height: 40vh;
+  min-height: 40vh;
   margin: 10px auto;
   display: block;
   font-size: 1rem;
+  line-height: 1.3rem;
   padding: 10px 15px;
 
   border: 2px solid #000000;
@@ -259,10 +291,11 @@ header {
 }
 /* writer options */
 .writer-options {
-  width: 80%;
+  width: 90%;
   margin: 0 auto 15px;
   display: flex;
   justify-content: space-between;
+  font-size: 1.1rem;
 }
 
 .writer-options .group {
@@ -270,15 +303,37 @@ header {
   align-items: center;
 }
 
-.writer-options label {
+.category-box input {
+  font-size: 1rem;
+  width: 300px;
+  padding: 2px 10px;
+}
+
+.publish-box {
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: 25px;
+}
+
+.publish-box label {
   margin-right: 10px;
+}
+
+.create-btn, .save-btn {
+  font-size: 1.1rem;
+  padding: 3px 0;
+  width: 180px;
+  color: #ffffff;
+  background-color: #222222;
+  border: 1px solid #222222;
+  border-radius: 5px;
 }
 
 .writer-options p {
   margin: 0 auto;
 }
 
-/* Tools */
+/* Writer Tools ----------------------------------- */
 
 .tools {
   display: flex;
@@ -290,12 +345,47 @@ header {
   padding: 15px 10px 10px;
 }
 
+.tools .cursive {
+  font-size: 2rem;
+}
+
+.tools h2 .type-font {
+  font-size: 1.4rem;
+}
+
 .rhyme-box,
 .synonym-box {
   width: 45%;
   display: inline-block;
-  background-color: #dddddd;
+  background-color: #cccccc;
   padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.tools form {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 15px;
+  border: 1px solid #222222;
+  border-radius: 5px;
+}
+
+.tools input {
+  font-size: 1.1rem;
+  padding: 1px 10px;
+  flex-grow: 1;
+  border: 1px solid #222222;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-btn {
+  font-size: 1.1rem;
+  flex-grow: 1;
+  padding: 1px 10px;
+  color: #ffffff;
+  background-color: #222222;
+  border: 1px solid #222222;
+  border-radius: 0 4px 4px 0;
 }
 
 .words {
@@ -306,6 +396,7 @@ header {
 
 .words span {
   margin: 0 3px;
+  letter-spacing: .8px;
 }
 
 .strong {
@@ -343,7 +434,6 @@ header {
   width: 60%;
 }
 
-
 .add-comment-box {
   margin-top: auto;
 }
@@ -357,6 +447,7 @@ header {
 }
 
 /* User Dashboard --------------------------------- */
+
 .card {
   margin: 0 5px 10px;
   padding: 10px;
@@ -395,6 +486,21 @@ header {
   margin-left: auto;
 }
 
+/* Categories Page -------------------------------- */
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 60vh;
+  padding-top: 10px;
+  overflow: hidden;
+}
+
+.categories h3 {
+  width: 25%;
+}
+
 /* Sign Up Page ----------------------------------- */
 .sign-up-box {
   font-size: 20px;
@@ -428,6 +534,7 @@ header {
 .form-control {
   width: 200px;
   border: 1px solid #000000;
+  padding: 0 5px;
 }
 
 .sign-up-btn {
@@ -437,9 +544,9 @@ header {
   width: 200px;
 
   color: #ffffff;
-  background-color: #333333;
+  background-color: #222222;
   font-size: 1em;
-  border: 2px solid #000000;
+  border: 2px solid #222222;
   border-radius: 4px;
 }
 
@@ -449,7 +556,7 @@ footer {
   background-color: #111111;
   width: 100vw;
   /* height: 50px; */
-  padding: 10px 0 10px;
+  padding: 5px 7% 10px;
 
   position: fixed;
   left: 0;
@@ -468,7 +575,7 @@ footer p {
 .footer-nav {
   display: inline-block;
   margin-left: auto;
-  font-size: 2.2rem;
+  font-size: 2rem;
   line-height: 40px;
 }
 
