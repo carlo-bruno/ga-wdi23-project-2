@@ -18,10 +18,12 @@ body {
   font-size: 16px;
   background-color: #e4e4e4;
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 pre {
-  /* font-family: "Lato", sans-serif; */
+  font-family: 'Special Elite', cursive;
   /* font-size: 1.2rem; */
   letter-spacing: 0.5px;
   margin: 20px 0 20px 5%;
@@ -38,7 +40,7 @@ pre {
 }
 
 .main {
-  padding: 0 8%;
+  padding: 10px 7% 90px;
 }
 
 hr {
@@ -71,6 +73,10 @@ h3 {
   background: linear-gradient(to top, #62ff00d6 0%, transparent 40%);
 }
 
+.type-font {
+  font-family: 'Special Elite', cursive;
+}
+
 /* Forms ------------------------------------------ */
 input {
   font-size: 1rem;
@@ -80,7 +86,7 @@ input {
 /* Page Header ------------------------------------ */
 header {
   color: #ffffff;
-  background-color: #000000;
+  background-color: #141414;
   width: 100vw;
   margin: 0 auto;
 }
@@ -134,6 +140,7 @@ header {
   padding: 0 12px;
   line-height: 25px;
   /* margin-right: 5px; */
+  transition: all .3s linear;
 }
 .page-header nav a:hover {
   background-color: #ffffff;
@@ -153,8 +160,8 @@ header {
   align-items: center;
 }
 
-#authEmail,
-#authPassword {
+#logEmail,
+#logPassword {
   width: 9rem;
   margin: 0 3px;
   font-size: 0.9rem;
@@ -168,6 +175,20 @@ header {
   border-radius: 3px;
 }
 
+.title-bar {
+  padding: 0 5% 20px;
+}
+
+.title-bar:before {
+  content: "";
+  width: 100%;
+  margin: 0 auto;
+  height: 1px;
+  display: block;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+
 /* Landing Page ----------------------------------- */
 .landing-page {
   width: 100vw;
@@ -177,14 +198,47 @@ header {
   background-color: #555555;
   background-image: linear-gradient(
       -90deg,
-      #0000004d,
-      #000000cc 50%
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.7) 50%
     ),
     url("/img/patrick-fore-381200-unsplash-min.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position-x: right;
   background-position-y: top;
+}
+
+/* Home Page -------------------------------------- */
+.home-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  background-color: #555555;
+  background-image:linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3)
+  ),
+  url("/img/ali-yahya-488146-unsplash-min.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position-x: right;
+  background-position-y: top;
+
+  padding-top: 10px;
+
+  color: #ffffff;
+}
+
+.home-page .type {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.home-page h3 {
+  padding-bottom: 12px;
+  font-weight: 300;
+  letter-spacing: .3px;
 }
 
 /* Writer Page ------------------------------------ */
@@ -201,13 +255,39 @@ header {
   padding: 10px 15px;
 
   border: 2px solid #000000;
-  border-radius: 8px;
+  border-radius: 5px;
 }
+/* writer options */
+.writer-options {
+  width: 80%;
+  margin: 0 auto 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.writer-options .group {
+  display: flex;
+  align-items: center;
+}
+
+.writer-options label {
+  margin-right: 10px;
+}
+
+.writer-options p {
+  margin: 0 auto;
+}
+
+/* Tools */
 
 .tools {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+}
+
+.tools h4 {
+  padding: 15px 10px 10px;
 }
 
 .rhyme-box,
@@ -218,33 +298,29 @@ header {
   padding: 10px 20px;
 }
 
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.words span {
+  margin: 0 3px;
+}
+
 .strong {
   font-weight: 500;
+  text-decoration: underline;
 }
 
 /* Show Poem Page --------------------------------- */
-.title-bar {
-  padding: 0 5% 15px;
-  margin-bottom: 10px;
-}
-
-.title-bar:before {
-  content: "";
-  width: 100%;
-  margin: 0 auto;
-  height: 1px;
-  display: block;
-  background-color: #ffffff;
-  margin-bottom: 10px;
-}
 
 .show-page {
   display: flex;
 }
 
 .show-page main {
-  width: 75%;
-  height: 80vh;
+  width: 72%;
   display: flex;
   flex-direction: column;
 }
@@ -287,6 +363,7 @@ header {
   border: 2px solid #000000;
   border-radius: 5px;
 
+
   display: flex;
   justify-content: center;
 }
@@ -297,18 +374,112 @@ header {
 
 .card .btn {
   font-size: 1.1rem;
-  width: 65px;
-  height: 27px ;
+  width: 85px;
+  height: 30px ;
   border: 1px solid #000000;
-  border-radius: 3px;
+  border-radius: 5px;
+  box-shadow: 0 3px 4px #000000;
   margin: 0 5px;
   cursor: pointer;
 }
 
+.published {
+  background-color: #ffffff;
+  box-shadow: 5px 8px 4px #000000af;
+}
+
 .unpublished {
   background-color:#cccccc;
-  width: 95%;
+  box-shadow: 5px 4px 4px #000000af;
+  width: 93%;
   margin-left: auto;
+}
+
+/* Sign Up Page ----------------------------------- */
+.sign-up-box {
+  font-size: 20px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px #000000af;
+  background: #ffffff;
+  margin: 8% auto 0;
+  padding: 40px;
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-box h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  font-size: 1.1em;
+  width: 330px;
+}
+
+.form-control {
+  width: 200px;
+  border: 1px solid #000000;
+}
+
+.sign-up-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 0;
+  width: 200px;
+
+  color: #ffffff;
+  background-color: #333333;
+  font-size: 1em;
+  border: 2px solid #000000;
+  border-radius: 4px;
+}
+
+/* Footer ----------------------------------------- */
+footer {
+  color: #ffffff;
+  background-color: #111111;
+  width: 100vw;
+  /* height: 50px; */
+  padding: 10px 0 10px;
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+footer div {
+  display: flex;
+  align-items: center;
+}
+
+footer p {
+  display: inline-block;
+}
+
+.footer-nav {
+  display: inline-block;
+  margin-left: auto;
+  font-size: 2.2rem;
+  line-height: 40px;
+}
+
+footer a {
+  margin: 0 2px;
+  border-bottom: 4px solid transparent;
+}
+
+footer a:hover {
+  color: #dddddd;
+  border-bottom: 4px solid #dddddd;
 }
 
 /* Alerts ----------------------------------------- */

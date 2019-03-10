@@ -1,25 +1,30 @@
 <main class="container">
-  <form action="/auth/signup" method="POST">
-    <div class="form-group">
-      <label for="authEmail">Email</label>
-      <input id="authEmail" class="form-control" type="email" name="email" required />
-    </div>
+  <div class="sign-up-box">
+    <h2>SIGN UP</h2>
 
-    <div class="form-group">
-      <label for="authName">Name</label>
-      <input id="authName" class="form-control" type="text" name="name" />
-    </div>
+    <form action="/auth/signup" method="POST">
+      <div class="form-group">
+        <label for="authEmail">Email *</label>
+        <input id="authEmail" class="form-control" type="email" name="email" required />
+      </div>
 
-    <div class="form-group">
-      <label for="authName">User Name</label>
-      <input id="authName" class="form-control" type="text" name="username" />
-    </div>
+      <div class="form-group">
+        <label for="authName">Name *</label>
+        <input id="authName" class="form-control" type="text" name="name" required />
+      </div>
 
-    <div class="form-group">
-      <label for="authPassword">Password</label>
-      <input id="authPassword" class="form-control" type="password" name="password" />
-    </div>
+      <div class="form-group">
+        <label for="authUsername">User Name *</label>
+        <input id="authUsername" class="form-control" type="text" name="username" required />
+      </div>
 
-    <input class="btn btn-primary" type="submit" />
-  </form>
+      <div class="form-group">
+        <label for="authPassword">Password *</label>
+        <input id="authPassword" class="form-control" type="password" name="password" required />
+      </div>
+
+      <button class="sign-up-btn" type="submit">REGISTER</button>
+    </form>
+
+  </div>
 </main>

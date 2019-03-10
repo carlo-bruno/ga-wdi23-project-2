@@ -1,5 +1,6 @@
 const express = require("express");
 const async = require("async");
+const isLoggedIn = require('../middleware/isLoggedIn');
 const db = require("../models");
 const router = express.Router();
 
@@ -60,7 +61,7 @@ router.get("/new", (req, res) => {
 });
 
 // GET /poems/1/edit - edit page
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", isLoggedIn, (req, res) => {
   let id = parseInt(req.params.id);
   db.poem.findById(id).then(poem => {
     poem.getCategories().then(categories => {

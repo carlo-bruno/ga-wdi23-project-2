@@ -4,21 +4,29 @@
     <!-- title -->
     <input type="text" name="title" placeholder="Title" /><br />
     <!-- content -->
-    <textarea name="content" id="newPad" class="notepad"></textarea>
+    <textarea name="content" id="newPad" class="notepad type-font"></textarea>
     <br />
     <!-- Show publish, submit if logged in -->
     <% if(currentUser){ %>
-    <label for="isPublished">Publish poem?</label>
-    <input type="checkbox" name="isPublished" />
-    <br />
-    <input type="text" name="category" placeholder="Category" />
-    <br />
+    <div class="writer-options">
+      <div class="group publish-box">
+        <label for="isPublished">Publish poem?</label>
+        <input type="checkbox" name="isPublished" />
+      </div>
 
-    <input type="hidden" name="userId" value="<%=currentUser.id%>" />
-    <input type="submit" value="Create!" />
+      <div class="group category-box">
+        <input type="text" name="category" placeholder="Category" />
+
+        <input type="hidden" name="userId" value="<%=currentUser.id%>" />
+        <button class="create-btn" type="submit">Create!</button>
+      </div>
+    </div>
     <%} else { %>
-    <p>Sign up or Log In to save your poem</p>
+    <div class="writer-options">
+      <p>Sign up or Log In to save your poem</p>
+    </div>
     <% } %>
+
   </form>
 
   <!-- Writer Tools -->

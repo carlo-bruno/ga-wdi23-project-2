@@ -26,11 +26,12 @@ router.post("/signup", function (req, res) {
         })(req, res);
       } else {
         console.log("Email already exists");
-        req.flash("error", "email already exists");
+        req.flash("error", "Email already exists.");
         res.redirect("/auth/signup");
       }
     })
     .catch(function (error) {
+      req.flash("error", "Error occurred. Please try again.")
       res.redirect("/auth/signup");
     });
 });

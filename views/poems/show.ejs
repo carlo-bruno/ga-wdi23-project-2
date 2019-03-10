@@ -2,7 +2,7 @@
 <% let {title, content,hearts, isPublished, user} = poem %>
 <header>
   <div class="container title-bar">
-    <h2><%= title %> by <%= user.name %></h2>
+    <h2><span class="type-font"><%= title %></span> by <%= user.name %></h2>
   </div>
 </header>
 
@@ -50,7 +50,7 @@
   </main>
 
   <aside>
-    <h3>Poems by <a class="highlight" href="/users/<%= user.id%>"><%= user.name%></a>:</h3>
+    <h3>Poems by <a class="highlight type-font" href="/users/<%= user.id%>"><%= user.name%></a>:</h3>
     <ul>
       <% more.forEach(entry => { %>
       <li><a class="type" href="poems/<%=entry.id%>"><%=entry.title%></a></li>

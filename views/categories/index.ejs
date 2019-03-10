@@ -1,9 +1,15 @@
 <!-- Show all categories -->
+<header>
+  <div class="container title-bar">
+    <h2> <a href="/categories/">Categories</a></h2>
+  </div>
+</header>
+
 <main class="category main">
 
   <% categories.forEach(category => { %>
   <h3>
-    <a href="/categories/<%= category.id %>"><%= category.name %></a>
+    <a class="type" href="/categories/<%= category.id %>"><%= category.name %></a>
   </h3>
   <% }); %>
 </main>

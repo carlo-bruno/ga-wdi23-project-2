@@ -1,12 +1,12 @@
 <!-- Poem Editor Page -->
 <%let {category} = poem %>
 <% let catStr = categories.map(category => category.name).join(', ')%>
-<main class="container">
+<main class="container main">
   <form action="/poems/<%=poem.id%>?_method=PUT" method="POST" class="writer-form">
     <!-- title -->
     <input type="text" name="title" value="<%=poem.title%>" /><br />
     <!-- content -->
-    <textarea name="content" id="editPad" class="notepad"><%-poem.content%></textarea>
+    <textarea name="content" id="editPad" class="notepad type-font"><%-poem.content%></textarea>
     <br />
     <label for="isPublished">Publish poem?</label>
     <input type="checkbox" name="isPublished" <%=poem.isPublished ?

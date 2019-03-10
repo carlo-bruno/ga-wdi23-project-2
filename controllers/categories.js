@@ -2,7 +2,7 @@ const express = require("express");
 const db = require("../models");
 const router = express.Router();
 
-// GET /users
+// GET /categories
 router.get("/", (req, res) => {
   db.category.findAll().then(categories => {
     res.render("categories/index", { categories });
@@ -16,7 +16,8 @@ router.get("/:id", (req, res) => {
     })
     .then(category => {
       category.getPoems({
-        where: { isPublished: true }
+        where: { isPublished: true },
+        include: [db.user]
       }).then(poems => {
         res.render("categories/show", { category, poems });
       });

@@ -1,7 +1,10 @@
 <!-- Show All Poems in one category -->
 <header>
   <div class="container title-bar">
-    <h2><%= category.name %></h2>
+    <h2>
+      <a href="/categories/">Categories ></a>
+      <span class="type-font"> <%= category.name %></span>
+    </h2>
   </div>
 </header>
 
@@ -9,7 +12,8 @@
   <% poems.forEach(poem => { %>
 
   <h3>
-    <a href="/poems/<%= poem.id %>"><%= poem.title %></a>
+    <a class="type" href="/poems/<%= poem.id %>"><%= poem.title %></a> by
+    <a class="highlight" href="/users/<%=poem.user.id%>"><%=poem.user.name%></a>
   </h3>
 
   <% }); %>

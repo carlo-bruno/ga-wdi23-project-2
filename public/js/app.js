@@ -40,12 +40,14 @@ function queryRhymes(query) {
       // create container
       for (let key in groups) {
         let div = document.createElement("div");
-        let label = document.createElement("h5");
-        label.textContent = groups[key].label;
+        let label = document.createElement("h4");
+        label.textContent = `${groups[key].label} (${groups[key].words.length})`;
+        label.classList.add("type-font")
         div.appendChild(label);
 
         // create div with spans
         let words = document.createElement("div");
+        words.classList.add('words');
         groups[key].words.forEach((word, i) => {
           let span = document.createElement("span");
           // no comma on last word
@@ -124,12 +126,14 @@ function querySynonyms(query) {
       // create container
       for (let key in groups) {
         let div = document.createElement("div");
-        let label = document.createElement("h5");
-        label.textContent = groups[key].label;
+        let label = document.createElement("h4");
+        label.textContent = `${groups[key].label} (${groups[key].words.length})`;
+        label.classList.add("type-font")
         div.appendChild(label);
 
         // create div with spans
         let words = document.createElement("div");
+        words.classList.add('words');
         groups[key].words.forEach((word, i) => {
           let span = document.createElement("span");
           // no comma on last word
