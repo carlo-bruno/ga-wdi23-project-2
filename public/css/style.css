@@ -404,6 +404,13 @@ header {
   text-decoration: underline;
 }
 
+/* Word Visualization ----------------------------- */
+#viz svg {
+  border: 5px solid black;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Show Poem Page --------------------------------- */
 
 .show-page {

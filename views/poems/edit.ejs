@@ -1,5 +1,4 @@
 <!-- Poem Editor Page -->
-<%let {category} = poem %>
 <% let catStr = categories.map(category => category.name).join(', ')%>
 
 <main class="container main">
@@ -25,7 +24,7 @@
     </div>
   </form>
 
-
+  <!-- <% include ../partials/wordViz %> -->
   <!-- Writer Tools -->
   <% include ../partials/writerTools %>
 </main>
