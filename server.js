@@ -48,7 +48,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.alerts = req.flash();
   res.locals.currentUser = req.user;
   next();
@@ -69,10 +69,6 @@ app.get("/welcome", (req, res) => {
   res.render("index");
 });
 
-app.get("/profile", isLoggedIn, function(req, res) {
-  res.render("profile");
-});
-
 app.use("/auth", require("./controllers/auth"));
 app.use("/poems", require("./controllers/poems"));
 app.use("/users", require("./controllers/users"));
@@ -83,7 +79,7 @@ app.get("/*", landingPage, (req, res) => {
   res.redirect("/");
 });
 
-var server = app.listen(port, function() {
+var server = app.listen(port, function () {
   console.log(`🔥 Listening on port ${port}...`);
 });
 
