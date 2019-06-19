@@ -1,4 +1,4 @@
-# ga-wdi23-project-1
+# ga-wdi23-project-2
 
 General Assembly Web Development Immersive - Project 2
 
