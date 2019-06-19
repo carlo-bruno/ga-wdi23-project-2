@@ -1,6 +1,6 @@
 console.log("wordViz.js connected")
 
-fetch("https://api.datamuse.com/words?rel_trg=fire")
+fetch("https://api.datamuse.com/words?rel_trg=power")
   .then(response => response.json()).then(response => {
     let data = response;
     // console.log(data);
@@ -44,7 +44,10 @@ fetch("https://api.datamuse.com/words?rel_trg=fire")
         .attr("r", function (d) {
           return radiusScale(d.score)
         })
-        .attr("fill", "green");
+        .attr("fill", "gray")
+        .on("click", function (d) {
+          console.log(d.word);
+        })
 
       simulation.nodes(data).on('tick', ticked);
 
