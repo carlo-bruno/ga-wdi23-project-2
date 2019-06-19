@@ -8,7 +8,7 @@ General Assembly Web Development Immersive - Project 2
 
 ### Project \#2 Full Stack Application - Node.js Express.js PostgreSQL
 
-[LIVE DEMO](https://evening-refuge-40821.herokuapp.com/welcome)
+[LIVE DEMO](https://plumapoetry.herokuapp.com/welcome)
 
 ## Table of Contents
 
